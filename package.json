@@ -1,0 +1,19 @@
+{
+  "author": "",
+  "name": "project_doc",
+  "description": "Project Documentation",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tulsawebdevs/Project-Doc.git"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "expresso"
+  },
+  "engines": {
+    "node": "~0.6.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
