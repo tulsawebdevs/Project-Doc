@@ -1,0 +1,35 @@
+!!!5
+html
+  head
+    title= title
+    script(src='js/lib/jquery-1.6.2.js')
+    script(src='js/lib/console-dummy.js')
+    script(src='js/lib/underscore.js')
+    script(src='js/lib/backbone-debug-0.5.3.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='js/module.js')
+    script(src='/skull.io/skull.io.js')
+    script(src='js/app.js')
+    
+  body
+    .page-header
+      h1 Welcome, &nbsp;
+        span.settings
+          span.user-name 
+            | Untitled
+          input.user-name-edit(style='display: none', type='text')
+        small &nbsp; Click to edit name
+    
+    section#steps
+      section.step-items
+      form(action="javascript: false;")
+        label(for='new-step-title') Title next step
+        input(type='text',name='new-step-title').new-step
+
+script#step-item(type='text/template')
+  section.step
+    header
+      h2.title 
+        span step {{item.id}}
+        |  {{item.title}}
+      input.edit-title(style='display: none')
