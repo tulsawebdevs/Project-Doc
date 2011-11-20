@@ -3,3 +3,4 @@ project_doc.tmproj
 node_modules
 npm-debug.log
 docs/
+.monitor
