@@ -17,25 +17,41 @@ html
     header.topbar
       .fill
         .container
-          a(href="#").brand Project Doc
+          a(href="/").brand Project Doc
           ul.nav
             li.active
-              a(href="#") Navigation
+              a(href="/") Home
             li
-              a(href="#") Navigation
+              a(href="/projects") Projects
             li
-              a(href="#") Navigation
+              a(href="/featured") Featured
+            li
+              a(href="/tools") Tools
             li.d
           ul.nav.secondary-nav
-            li.dropdown(data-dropdown="login")
-              a.dropdown-toggle(href="#") Login
-              ul.dropdown-menu
-                li
-                  a(href="#") with Twitter
-                  a(href="#") with Facebook
-                li.divider
-                li
-                  a(href="#") Register Account
+            -if(!session.auth)
+              li.dropdown(data-dropdown="login")
+                a.dropdown-toggle(href="#") Login
+                ul.dropdown-menu
+                  li
+                    a(href="/auth/twitter") with Twitter
+                    a(href="/auth/facebook") with Facebook
+                    a(href="/auth/github") with Github
+                  li.divider
+                  li
+                    a(href="/register") Register Account
+            -else
+              li.dropdown.account(data-dropdown="account")
+                a.dropdown-toggle.user-photo(href="#")
+                  img(src=session.user.image)
+                  = session.user.name 
+                ul.dropdown-menu
+                  li
+                    a(href="/settings") Settings
+                  li
+                    a(href="/myProjects") Projects
+                  li
+                    a(href="/logout") Logout
                   
     section.container
       .content

@@ -37,10 +37,6 @@ body {
   padding: 20px 20px 10px;
   margin: -20px -20px 20px;
 }
-/* Styles you shouldn't keep as they are for displaying this base example only */
-.content .span10, .content .span4 {
-  min-height: 500px;
-}
 /* Give a quick and non-cross-browser friendly divider */
 .content .span4 {
   margin-left: 0;
@@ -49,4 +45,17 @@ body {
 }
 .topbar .btn {
   border: 0;
+}
+.topbar ul li.account a.user-photo img {
+  border: medium none;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  margin-right: 6px;
+  margin-top: -3px;
+  vertical-align: middle;
+  width: 20px;
+  -webkit-box-shadow: 0px 1px 0px white;
+  -moz-box-shadow: 0px 1px 0px white;
+  box-shadow: 0px 1px 0px white;
 }

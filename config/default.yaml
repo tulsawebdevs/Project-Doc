@@ -1,0 +1,14 @@
+debug: false
+server:
+  uri: "localhost"
+  port: 9000
+auth:
+  twitter:
+    # consumerKey: "changeme"
+    # consumerSecret: "changeme"
+  facebook:
+    # appId: "changeme"
+    # appSecret: "changeme"
+  github:
+    # appId: false
+    # appSecret: false
