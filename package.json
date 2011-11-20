@@ -10,7 +10,7 @@
   "main": "lib/server.js",
   "scripts": {
     "start": "coffee -o lib/ -cw libsrc/ & nodemon lib/server.js",
-    "debug": "nodemon lib/server.js --debug port 5858",
+    "debug": "coffee -o lib/ -cw libsrc/ & nodemon lib/server.js --debug port 5858",
     "test": "expresso"
   },
   "engines": {
@@ -22,7 +22,8 @@
     "jade": "0.17.0",
     "nodemon": "*",
     "skull.io": "0.2.0",
-    "underscore": "*"
+    "underscore": "*",
+    "less": "*"
   },
   "devDependencies": {
     "expresso": "*"

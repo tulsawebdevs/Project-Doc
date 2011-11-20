@@ -2,29 +2,62 @@
 html
   head
     title= title
-    script(src='js/lib/jquery-1.6.2.js')
-    script(src='js/lib/console-dummy.js')
-    script(src='js/lib/underscore.js')
-    script(src='js/lib/backbone-debug-0.5.3.js')
+    script(src='/js/lib/jquery-1.6.2.js')
+    script(src='/js/lib/console-dummy.js')
+    script(src='/js/lib/underscore.js')
+    script(src='/js/lib/backbone-debug-0.5.3.js')
     script(src='/socket.io/socket.io.js')
-    script(src='js/module.js')
+    script(src='/js/module.js')
     script(src='/skull.io/skull.io.js')
-    script(src='js/app.js')
-    
+    script(src='/js/bs/bootstrap-dropdown.js')
+    script(src='/js/app.js')
+    link( href="/css/bootstrap.css", rel="stylesheet")
+    link( href="/css/basics.css", rel="stylesheet")
   body
-    .page-header
-      h1 Welcome, &nbsp;
-        span.settings
-          span.user-name 
-            | Untitled
-          input.user-name-edit(style='display: none', type='text')
-        small &nbsp; Click to edit name
-    
-    section#steps
-      section.step-items
-      form(action="javascript: false;")
-        label(for='new-step-title') Title next step
-        input(type='text',name='new-step-title').new-step
+    header.topbar
+      .fill
+        .container
+          a(href="#").brand Project Doc
+          ul.nav
+            li.active
+              a(href="#") Navigation
+            li
+              a(href="#") Navigation
+            li
+              a(href="#") Navigation
+            li.d
+          ul.nav.secondary-nav
+            li.dropdown(data-dropdown="login")
+              a.dropdown-toggle(href="#") Login
+              ul.dropdown-menu
+                li
+                  a(href="#") with Twitter
+                  a(href="#") with Facebook
+                li.divider
+                li
+                  a(href="#") Register Account
+                  
+    section.container
+      .content
+        .page-header
+          h1 Welcome, &nbsp;
+            span.settings
+              span.user-name 
+                | Untitled
+              input.user-name-edit(style='display: none', type='text')
+            small &nbsp; Click to edit name
+        .row
+          .span10
+            h2 Add steps
+            section#steps
+              section.step-items
+              form(action="javascript: false;")
+                label(for='new-step-title') Title next step
+                input(type='text',name='new-step-title').new-step
+          .span4
+            h3 Secondary
+      footer
+        p &copy; someone
 
 script#step-item(type='text/template')
   section.step

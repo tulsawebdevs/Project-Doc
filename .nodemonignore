@@ -1,7 +1,9 @@
+.git
 .DS_Store
 .coffee
 lib-cov
 test/*.test.js
 !.js
-/public/js
+/public
+/publicsrc
 views

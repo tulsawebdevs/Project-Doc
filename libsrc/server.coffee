@@ -3,15 +3,14 @@ path = require 'path'
 
 app = module.exports = express.createServer()
 
+root = path.resolve __dirname + "/../"
+public = root + '/public'
+publicsrc = root + '/publicsrc'
+
 app.configure( ->
   app.set 'views', path.resolve __dirname + '/../views'
   app.set 'view engine', 'jade'
   app.set 'view options', {layout: true}
-  app.use express.compiler(
-    src: path.resolve __dirname + '/../publicsrc'
-    dest: path.resolve __dirname + '/../public'
-    enable: ['coffeescript']
-  )
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use express.cookieParser()
@@ -19,6 +18,11 @@ app.configure( ->
     secret: 'hgk83kc0qdm298xn'
     store: new express.session.MemoryStore
   })
+  app.use express.compiler(
+    src: publicsrc
+    dest: public
+    enable: ['coffeescript','less']
+  )
   app.use app.router
   app.use express.static path.resolve __dirname + '/../public'
 )
