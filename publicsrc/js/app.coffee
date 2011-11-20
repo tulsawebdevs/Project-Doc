@@ -72,18 +72,17 @@ $ ->
     
   class StepView extends Backbone.View
     initialize: ->
+      # prevent form submit
+      @el.find('form').submit ->
+        return false
       @collection.bind 'add', @addOne
       @collection.bind 'reset', @addAll
       @collection.bind 'all', @changed
       @collection.fetch()
       @list = @$ '.step-items'
       @input = @$ 'input.new-step'
-      # console.log(@list,@input);
       @input.keyup (e) =>
         e.preventDefault()
-        e.stopPropogation()
-        console.log(e);
-        console.log(e.keyCode);
         if e.keyCode == 13 
           text = $.trim @input.val()
           if text.length
@@ -108,9 +107,7 @@ $ ->
     
     addOne: (model) =>
       view = new StepItemView model: model
-      rendered = view.render().el
-      console.log rendered
-      @list.append rendered
+      @list.append view.render().el
   
   
   #-----------------------

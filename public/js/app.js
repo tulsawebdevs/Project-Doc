@@ -132,6 +132,9 @@
 
       StepView.prototype.initialize = function() {
         var _this = this;
+        this.el.find('form').submit(function() {
+          return false;
+        });
         this.collection.bind('add', this.addOne);
         this.collection.bind('reset', this.addAll);
         this.collection.bind('all', this.changed);
@@ -141,9 +144,6 @@
         this.input.keyup(function(e) {
           var text;
           e.preventDefault();
-          e.stopPropagation();
-          console.log(e);
-          console.log(e.keyCode);
           if (e.keyCode === 13) {
             text = $.trim(_this.input.val());
             if (text.length) {
@@ -166,13 +166,11 @@
       };
 
       StepView.prototype.addOne = function(model) {
-        var rendered, view;
+        var view;
         view = new StepItemView({
           model: model
         });
-        rendered = view.render().el;
-        console.log(rendered);
-        return this.list.append(rendered);
+        return this.list.append(view.render().el);
       };
 
       return StepView;
