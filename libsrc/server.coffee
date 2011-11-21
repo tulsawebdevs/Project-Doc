@@ -32,7 +32,7 @@ app.configure( ->
   app.use express.compiler(
     src: publicsrc
     dest: public
-    enable: ['coffeescript','less']
+    enable: ['coffeescript']
   )
   app.use app.router
   app.use express.static path.resolve __dirname + '/../public'
