@@ -1,7 +1,9 @@
 # Server requirements
 express = require 'express'
 path = require 'path'
-config = require 'config'
+
+config = require './config'
+
 
 # Create server
 app = module.exports = express.createServer()
@@ -22,8 +24,8 @@ app.configure( ->
   app.use express.methodOverride()
   app.use express.cookieParser()
   app.use express.session({
-    secret: 'hgk83kc0qdm298xn'
-    store: new express.session.MemoryStore
+    secret: config.get('session:key') || 'suparsecret'
+    store: new SessionStore()
   })
   
   app.use auth.middleware.auth()
@@ -66,6 +68,6 @@ process.on 'uncaughtException', (err) ->
   console.error err
   console.log err.stack
   
-app.listen( process.env.PORT || config.server.port || 9000 )
+app.listen( process.env.PORT || config.get "server:port" || 9000 )
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env)
 

@@ -5,4 +5,7 @@ npm-debug.log
 docs/
 .monitor
 publicsrc/bootstrap
-config/pats-mbp.yaml
+
+#only track default.json
+/config/*
+!/config/default.json

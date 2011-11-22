@@ -1,0 +1,37 @@
+{
+  "debug": false,
+  "server":{
+    "uri": "localhost",
+    "port": 9000
+  },
+  "auth":{
+    "twitter":{
+      "consumerKey": "changeme",
+      "consumerSecret": "changeme"
+    },
+    "facebook":{
+      "appId": "changeme",
+      "appSecret": "changeme"
+    },
+    "github":{
+      "appId": "changeme",
+      "appSecret": "changeme"
+    }
+  },
+  "db":{
+    "mongo":{
+      "database": "proj-doc",
+      "host": "127.0.0.1",
+      "port": 27017,
+      "options":{
+        "username": false,
+        "password": false
+      }
+    }
+  },
+  "session":{
+    "key": "supper secret key",
+    "collection": "sessions",
+    "clear_interval": 67890
+  }
+}
