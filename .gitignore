@@ -1,9 +1,9 @@
 project_doc.tmproj
-.DS_Store
-node_modules
-npm-debug.log
-docs/
 .monitor
+.DS_Store
+/node_modules
+npm-debug.log
+/docs/
 publicsrc/bootstrap
 /lib
 #only track default.json
