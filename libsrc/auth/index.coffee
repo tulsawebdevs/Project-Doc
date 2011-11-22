@@ -3,8 +3,9 @@ https = require 'https'
 
 module.exports = ( app, config ) ->
   
-  everyauth.debug = config.debug
-  external = config.auth
+  everyauth.debug = config.get 'debug'
+  external = config.get 'auth'
+  serverUri = config.get 'server:uri'
   
   everyauth.everymodule.handleLogout (req, res) ->
     delete req.session.user
@@ -20,12 +21,11 @@ module.exports = ( app, config ) ->
     .findOrCreateUser (session, accessToken, accessTokenExtra, facebookUserMetaData) ->
       true
     .redirectPath('/')
-    
   
   # Twitter
   if (external?.twitter)
     everyauth.twitter
-    .myHostname(config.server.uri)
+    .myHostname(serverUri)
     .consumerKey(external.twitter.consumerKey)
     .consumerSecret(external.twitter.consumerSecret)
     .findOrCreateUser (session, accessToken, accessSecret, twitterUser) ->
@@ -36,7 +36,7 @@ module.exports = ( app, config ) ->
   # Github
   if (external?.github)
     everyauth.github
-    .myHostname(config.server.uri)
+    .myHostname(serverUri)
     .appId(external.github.appId)
     .appSecret(external.github.appSecret)
     .findOrCreateUser (session, accessToken, accessTokenExtra, githubUser) ->

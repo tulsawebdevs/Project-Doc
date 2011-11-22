@@ -1,9 +1,11 @@
 # Server requirements
 express = require 'express'
 path = require 'path'
+mongoose = require 'mongoose'
 
 config = require './config'
 
+SessionStore = require('connect-mongoose')(express)
 
 # Create server
 app = module.exports = express.createServer()
@@ -14,7 +16,7 @@ root = path.resolve __dirname + "/../"
 public = root + '/public'
 publicsrc = root + '/publicsrc'
 
-auth = require('./auth')(app,config)
+auth = require('./auth/mongo')(app,config)
 
 app.configure( ->
   app.set 'views', path.resolve __dirname + '/../views'
@@ -23,22 +25,31 @@ app.configure( ->
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use express.cookieParser()
+    
   app.use express.session({
     secret: config.get('session:key') || 'suparsecret'
     store: new SessionStore()
   })
   
-  app.use auth.middleware.auth()
-  app.use auth.middleware.normalizeUserData()
+  app.use auth.middleware()
+  # app.use auth.middleware.normalizeUserData()
   
   app.use express.compiler(
     src: publicsrc
     dest: public
     enable: ['coffeescript']
   )
-  app.use app.router
+  
+  # app.use app.router
   app.use express.static path.resolve __dirname + '/../public'
+  
 )
+
+# console.log(config.get('db:mongo'))
+mongoose.connect('mongodb://localhost/proj-doc');
+
+mongoose.connection.on 'open', ->
+  console.log('mongo connection open')
 
 app.configure 'development', ->
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }))
