@@ -14,10 +14,10 @@
     "test": "expresso"
   },
   "engines": {
-    "node": "~0.6.0"
+    "node": ">=0.6.0"
   },
   "dependencies": {
-    "config": "*",
+    "nconf": "*",
     "express": "2.5.1",
     "coffee-script": "1.1.3",
     "jade": "0.17.0",
@@ -25,7 +25,8 @@
     "skull.io": "0.2.0",
     "underscore": "*",
     "less": "*",
-    "everyauth": "0.2.23"
+    "everyauth": "0.2.23",
+    "mongoose": "*"
   },
   "devDependencies": {
     "expresso": "*"
