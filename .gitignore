@@ -5,7 +5,7 @@ npm-debug.log
 docs/
 .monitor
 publicsrc/bootstrap
-
+/lib
 #only track default.json
 /config/*
 !/config/default.json
